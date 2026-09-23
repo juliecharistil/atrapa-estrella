@@ -2,20 +2,403 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Atrapa la Estrella, un divertido juego de reflejos."
+    >
+
     <title>Atrapa la Estrella ✨</title>
-    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 </head>
+
 <body>
 
-    <h1 class="titulo">✨ Atrapa la Estrella ✨</h1>
+    <!-- =====================================================
+         CONTENEDOR PRINCIPAL
+    ====================================================== -->
 
-    <div class="puntaje">Puntaje: <span id="score">0</span></div>
+    <main class="game-wrapper">
 
-    <div id="game-area">
-        <img id="estrella" src="estrella.png" alt="estrella">
-    </div>
+        <!-- =================================================
+             ENCABEZADO
+        ================================================== -->
+
+        <header class="game-header">
+
+            <div class="brand">
+
+                <div class="brand-icon">
+                    ✨
+                </div>
+
+                <div>
+                    <h1>
+                        Atrapa la Estrella
+                    </h1>
+
+                    <p>
+                        Pon a prueba tus reflejos
+                    </p>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             PANEL DE INFORMACIÓN
+        ================================================== -->
+
+        <section class="stats">
+
+            <div class="stat-card">
+
+                <span class="stat-icon">
+                    ⭐
+                </span>
+
+                <div>
+                    <span class="stat-label">
+                        Puntos
+                    </span>
+
+                    <strong id="score">
+                        0
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span class="stat-icon">
+                    ❤️
+                </span>
+
+                <div>
+                    <span class="stat-label">
+                        Vidas
+                    </span>
+
+                    <strong id="lives">
+                        3
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span class="stat-icon">
+                    ⏱️
+                </span>
+
+                <div>
+                    <span class="stat-label">
+                        Tiempo
+                    </span>
+
+                    <strong>
+                        <span id="time">
+                            30
+                        </span>s
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span class="stat-icon">
+                    🏆
+                </span>
+
+                <div>
+                    <span class="stat-label">
+                        Récord
+                    </span>
+
+                    <strong id="best-score">
+                        0
+                    </strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             BARRA DE PROGRESO
+        ================================================== -->
+
+        <div class="progress-container">
+
+            <div
+                id="progress-bar"
+                class="progress-bar"
+            ></div>
+
+        </div>
+
+
+        <!-- =================================================
+             ÁREA DEL JUEGO
+        ================================================== -->
+
+        <section
+            id="game-area"
+            class="game-area"
+        >
+
+            <!-- ESTADO INICIAL -->
+
+            <div
+                id="start-screen"
+                class="game-screen active"
+            >
+
+                <div class="screen-icon">
+                    ✨
+                </div>
+
+                <h2>
+                    ¿Listo para comenzar?
+                </h2>
+
+                <p>
+                    Atrapa todas las estrellas que puedas
+                    antes de que termine el tiempo.
+                </p>
+
+                <div class="rules">
+
+                    <div>
+                        <span>⭐</span>
+                        <small>
+                            Atrapa estrellas
+                        </small>
+                    </div>
+
+                    <div>
+                        <span>❤️</span>
+                        <small>
+                            Conserva tus vidas
+                        </small>
+                    </div>
+
+                    <div>
+                        <span>🏆</span>
+                        <small>
+                            Supera tu récord
+                        </small>
+                    </div>
+
+                </div>
+
+                <button
+                    id="start-button"
+                    class="primary-button"
+                >
+                    🚀 Comenzar partida
+                </button>
+
+            </div>
+
+
+            <!-- ESTRELLA -->
+
+            <button
+                id="estrella"
+                class="star-button"
+                aria-label="Atrapar estrella"
+            >
+                <img
+                    src="estrella.png"
+                    alt="Estrella"
+                >
+            </button>
+
+
+            <!-- EFECTO DE PUNTOS -->
+
+            <div
+                id="points-effect"
+                class="points-effect"
+            >
+                +1
+            </div>
+
+
+            <!-- PANTALLA DE RESULTADO -->
+
+            <div
+                id="result-screen"
+                class="game-screen"
+            >
+
+                <div
+                    id="result-icon"
+                    class="result-icon"
+                >
+                    🏆
+                </div>
+
+                <span
+                    id="result-label"
+                    class="result-label"
+                >
+                    PARTIDA TERMINADA
+                </span>
+
+                <h2 id="result-title">
+                    ¡Buen trabajo!
+                </h2>
+
+                <p id="result-message">
+                    Has completado la partida.
+                </p>
+
+
+                <!-- RESULTADOS -->
+
+                <div class="result-stats">
+
+                    <div class="result-box">
+
+                        <span>
+                            ⭐ Puntaje
+                        </span>
+
+                        <strong id="final-score">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="result-box">
+
+                        <span>
+                            🪙 Recompensa
+                        </span>
+
+                        <strong id="reward">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="result-box">
+
+                        <span>
+                            🏆 Récord
+                        </span>
+
+                        <strong id="final-best">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="result-actions">
+
+                    <button
+                        id="restart-button"
+                        class="primary-button"
+                    >
+                        🔄 Jugar de nuevo
+                    </button>
+
+                    <button
+                        id="home-button"
+                        class="secondary-button"
+                    >
+                        🏠 Inicio
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             OBJETIVO
+        ================================================== -->
+
+        <section class="objective">
+
+            <div class="objective-icon">
+                🎯
+            </div>
+
+            <div>
+
+                <strong>
+                    Objetivo de la partida
+                </strong>
+
+                <p>
+                    Atrapa la mayor cantidad de estrellas
+                    antes de que se termine el tiempo.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             PIE
+        ================================================== -->
+
+        <footer class="game-footer">
+
+            <span>
+                ✨ Atrapa la Estrella
+            </span>
+
+            <span>
+                •
+            </span>
+
+            <span>
+                ¡Diviértete!
+            </span>
+
+        </footer>
+
+    </main>
+
 
     <script src="game.js"></script>
+
 </body>
 </html>
