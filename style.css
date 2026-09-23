@@ -1,42 +1,1224 @@
-body {
-    background: linear-gradient(135deg, #ffd1e8, #ffeaf4);
-    font-family: "Poppins", sans-serif;
-    text-align: center;
+/* =========================================================
+   ATRAPA LA ESTRELLA
+   DISEÑO PROFESIONAL
+========================================================= */
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root {
+
+    --primary: #8b5cf6;
+
+    --primary-dark: #6d28d9;
+
+    --secondary: #ec4899;
+
+    --pink-light: #fce7f3;
+
+    --purple-light: #ede9fe;
+
+    --background: #f8f7ff;
+
+    --white: #ffffff;
+
+    --text: #1f2937;
+
+    --muted: #6b7280;
+
+    --border: #eeeaf7;
+
+    --success: #22c55e;
+
+    --danger: #ef4444;
+
+    --warning: #f59e0b;
+
+    --shadow:
+        0 20px 50px rgba(76, 29, 149, 0.12);
+
+    --radius: 24px;
+
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+
+    box-sizing: border-box;
+
     margin: 0;
+
     padding: 0;
+
 }
 
-.titulo {
-    margin-top: 20px;
-    font-size: 2rem;
-    color: #ff78b8;
-    text-shadow: 0 0 10px #ffb4d1;
+
+/* =========================================================
+   BODY
+========================================================= */
+
+body {
+
+    min-height: 100vh;
+
+    font-family:
+        "Nunito",
+        sans-serif;
+
+    color: var(--text);
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #f5d0fe 0,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            #ddd6fe 0,
+            transparent 35%
+        ),
+        var(--background);
+
+    padding: 30px 18px;
+
 }
 
-.puntaje {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    color: #ff4fa3;
+
+/* =========================================================
+   CONTENEDOR
+========================================================= */
+
+.game-wrapper {
+
+    width: min(1100px, 100%);
+
+    margin: 0 auto;
+
 }
 
-#game-area {
-    width: 100%;
-    height: 80vh;
-    position: relative;
-    border: 3px solid #ff8fcf;
-    border-radius: 15px;
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.game-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 25px;
+
+}
+
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+}
+
+
+.brand-icon {
+
+    width: 62px;
+
+    height: 62px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 20px;
+
+    font-size: 32px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8b5cf6,
+            #ec4899
+        );
+
+    box-shadow:
+        0 12px 25px
+        rgba(139, 92, 246, .25);
+
+}
+
+
+.brand h1 {
+
+    font-size: clamp(1.7rem, 4vw, 2.5rem);
+
+    font-weight: 900;
+
+    letter-spacing: -1px;
+
+}
+
+
+.brand p {
+
+    color: var(--muted);
+
+    font-size: .95rem;
+
+    margin-top: 2px;
+
+}
+
+
+/* =========================================================
+   ESTADÍSTICAS
+========================================================= */
+
+.stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 14px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.stat-card {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 16px;
+
+    background:
+        rgba(255, 255, 255, .88);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 25px
+        rgba(31, 41, 55, .05);
+
+}
+
+
+.stat-icon {
+
+    width: 42px;
+
+    height: 42px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 13px;
+
+    background: var(--purple-light);
+
+    font-size: 20px;
+
+}
+
+
+.stat-label {
+
+    display: block;
+
+    color: var(--muted);
+
+    font-size: .75rem;
+
+    font-weight: 700;
+
+}
+
+
+.stat-card strong {
+
+    display: block;
+
+    font-size: 1.25rem;
+
+    font-weight: 900;
+
+}
+
+
+/* =========================================================
+   PROGRESO
+========================================================= */
+
+.progress-container {
+
+    height: 8px;
+
+    background:
+        rgba(139, 92, 246, .12);
+
+    border-radius: 50px;
+
     overflow: hidden;
-    background: #fff6fb;
-    box-shadow: 0 0 20px #ffc5df;
+
+    margin-bottom: 15px;
+
 }
 
-#estrella {
-    width: 70px;
+
+.progress-bar {
+
+    width: 100%;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #8b5cf6,
+            #ec4899
+        );
+
+    border-radius: inherit;
+
+    transition:
+        width .8s ease;
+
+}
+
+
+/* =========================================================
+   ÁREA DEL JUEGO
+========================================================= */
+
+.game-area {
+
+    position: relative;
+
+    width: 100%;
+
+    min-height: 580px;
+
+    overflow: hidden;
+
+    border-radius: var(--radius);
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #faf5ff
+        );
+
+    border:
+        1px solid var(--border);
+
+    box-shadow: var(--shadow);
+
+}
+
+
+/* =========================================================
+   DECORACIÓN
+========================================================= */
+
+.game-area::before {
+
+    content: "";
+
     position: absolute;
-    cursor: pointer;
-    transition: transform 0.1s;
+
+    width: 250px;
+
+    height: 250px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(196, 181, 253, .15);
+
+    top: -100px;
+
+    right: -80px;
+
 }
 
-#estrella:active {
-    transform: scale(0.8);
+
+.game-area::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+
+    height: 180px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(244, 114, 182, .10);
+
+    bottom: -70px;
+
+    left: -60px;
+
+}
+
+
+/* =========================================================
+   PANTALLAS
+========================================================= */
+
+.game-screen {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 10;
+
+    display: none;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding: 30px;
+
+}
+
+
+.game-screen.active {
+
+    display: flex;
+
+}
+
+
+/* =========================================================
+   ICONO INICIAL
+========================================================= */
+
+.screen-icon {
+
+    width: 100px;
+
+    height: 100px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 30px;
+
+    font-size: 55px;
+
+    margin-bottom: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ede9fe,
+            #fce7f3
+        );
+
+    animation:
+        floating 2.5s ease-in-out infinite;
+
+}
+
+
+@keyframes floating {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-10px);
+
+    }
+
+}
+
+
+/* =========================================================
+   TEXTOS
+========================================================= */
+
+.game-screen h2 {
+
+    font-size:
+        clamp(1.8rem, 4vw, 2.7rem);
+
+    font-weight: 900;
+
+    margin-bottom: 10px;
+
+}
+
+
+.game-screen > p {
+
+    max-width: 520px;
+
+    color: var(--muted);
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================================================
+   REGLAS
+========================================================= */
+
+.rules {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+    margin:
+        25px 0;
+
+}
+
+
+.rules div {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding:
+        10px 14px;
+
+    border-radius: 50px;
+
+    background:
+        #ffffff;
+
+    border:
+        1px solid var(--border);
+
+    box-shadow:
+        0 5px 15px
+        rgba(31, 41, 55, .05);
+
+}
+
+
+.rules span {
+
+    font-size: 18px;
+
+}
+
+
+.rules small {
+
+    color: var(--muted);
+
+    font-weight: 700;
+
+}
+
+
+/* =========================================================
+   BOTONES
+========================================================= */
+
+.primary-button,
+.secondary-button {
+
+    border: none;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    font-size: 1rem;
+
+    font-weight: 900;
+
+    border-radius: 15px;
+
+    padding:
+        14px 25px;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+
+}
+
+
+.primary-button {
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    box-shadow:
+        0 10px 25px
+        rgba(139, 92, 246, .25);
+
+}
+
+
+.secondary-button {
+
+    color: var(--primary-dark);
+
+    background:
+        var(--purple-light);
+
+}
+
+
+.primary-button:hover,
+.secondary-button:hover {
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+.primary-button:active,
+.secondary-button:active {
+
+    transform:
+        translateY(1px);
+
+}
+
+
+/* =========================================================
+   ESTRELLA
+========================================================= */
+
+.star-button {
+
+    position: absolute;
+
+    z-index: 5;
+
+    display: none;
+
+    width: 70px;
+
+    height: 70px;
+
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    border-radius: 50%;
+
+}
+
+
+.star-button.visible {
+
+    display: block;
+
+}
+
+
+.star-button img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 8px 10px
+            rgba(245, 158, 11, .25)
+        );
+
+    transition:
+        transform .12s ease;
+
+}
+
+
+.star-button:hover img {
+
+    transform:
+        scale(1.12)
+        rotate(8deg);
+
+}
+
+
+.star-button:active img {
+
+    transform:
+        scale(.75);
+
+}
+
+
+/* =========================================================
+   ANIMACIÓN ESTRELLA
+========================================================= */
+
+.move-animation {
+
+    animation:
+        starAppear .22s ease;
+
+}
+
+
+@keyframes starAppear {
+
+    from {
+
+        opacity: .3;
+
+        transform:
+            scale(.7)
+            rotate(-15deg);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1)
+            rotate(0);
+
+    }
+
+}
+
+
+/* =========================================================
+   EFECTO +1
+========================================================= */
+
+.points-effect {
+
+    position: absolute;
+
+    z-index: 20;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    color: var(--success);
+
+    font-size: 1.6rem;
+
+    font-weight: 900;
+
+}
+
+
+.points-effect.show {
+
+    animation:
+        pointsUp .7s ease forwards;
+
+}
+
+
+@keyframes pointsUp {
+
+    0% {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(.8);
+
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translateY(-60px)
+            scale(1.2);
+
+    }
+
+}
+
+
+/* =========================================================
+   EFECTO ERROR
+========================================================= */
+
+.game-area.miss {
+
+    animation:
+        shake .25s ease;
+
+}
+
+
+@keyframes shake {
+
+    0%,
+    100% {
+
+        transform:
+            translateX(0);
+
+    }
+
+    25% {
+
+        transform:
+            translateX(-7px);
+
+    }
+
+    75% {
+
+        transform:
+            translateX(7px);
+
+    }
+
+}
+
+
+/* =========================================================
+   RESULTADO
+========================================================= */
+
+.result-icon {
+
+    font-size: 70px;
+
+    margin-bottom: 10px;
+
+}
+
+
+.result-label {
+
+    display: inline-block;
+
+    color: var(--primary);
+
+    font-size: .75rem;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 8px;
+
+}
+
+
+.result-message {
+
+    color: var(--muted);
+
+    max-width: 500px;
+
+}
+
+
+/* =========================================================
+   RESULTADOS
+========================================================= */
+
+.result-stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+
+    width: min(650px, 100%);
+
+    margin:
+        25px 0;
+
+}
+
+
+.result-box {
+
+    padding: 17px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(255,255,255,.9);
+
+    border:
+        1px solid var(--border);
+
+}
+
+
+.result-box span {
+
+    display: block;
+
+    color: var(--muted);
+
+    font-size: .8rem;
+
+    font-weight: 700;
+
+    margin-bottom: 5px;
+
+}
+
+
+.result-box strong {
+
+    font-size: 1.5rem;
+
+    font-weight: 900;
+
+}
+
+
+/* =========================================================
+   ACCIONES RESULTADO
+========================================================= */
+
+.result-actions {
+
+    display: flex;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+}
+
+
+/* =========================================================
+   OBJETIVO
+========================================================= */
+
+.objective {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-top: 18px;
+
+    padding: 18px 20px;
+
+    background:
+        rgba(255,255,255,.8);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 18px;
+
+}
+
+
+.objective-icon {
+
+    width: 45px;
+
+    height: 45px;
+
+    display: grid;
+
+    place-items: center;
+
+    flex-shrink: 0;
+
+    border-radius: 14px;
+
+    background:
+        var(--purple-light);
+
+    font-size: 21px;
+
+}
+
+
+.objective strong {
+
+    display: block;
+
+    margin-bottom: 3px;
+
+}
+
+
+.objective p {
+
+    color: var(--muted);
+
+    font-size: .9rem;
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.game-footer {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    color: var(--muted);
+
+    font-size: .85rem;
+
+    padding: 22px;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .stats {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+    .game-area {
+
+        min-height: 520px;
+
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    body {
+
+        padding:
+            18px 12px;
+
+    }
+
+
+    .brand {
+
+        text-align: left;
+
+    }
+
+
+    .brand-icon {
+
+        width: 52px;
+
+        height: 52px;
+
+        font-size: 27px;
+
+    }
+
+
+    .stats {
+
+        gap: 8px;
+
+    }
+
+
+    .stat-card {
+
+        padding: 12px;
+
+    }
+
+
+    .stat-icon {
+
+        width: 36px;
+
+        height: 36px;
+
+        font-size: 17px;
+
+    }
+
+
+    .game-area {
+
+        min-height: 500px;
+
+        border-radius: 20px;
+
+    }
+
+
+    .game-screen {
+
+        padding: 20px;
+
+    }
+
+
+    .screen-icon {
+
+        width: 80px;
+
+        height: 80px;
+
+        font-size: 42px;
+
+    }
+
+
+    .rules {
+
+        gap: 7px;
+
+    }
+
+
+    .rules div {
+
+        padding:
+            8px 10px;
+
+    }
+
+
+    .result-stats {
+
+        grid-template-columns:
+            1fr 1fr;
+
+    }
+
+
+    .result-box:last-child {
+
+        grid-column:
+            1 / -1;
+
+    }
+
+
+    .objective {
+
+        align-items:
+            flex-start;
+
+    }
+
+}
+
+
+@media (max-width: 400px) {
+
+    .stats {
+
+        grid-template-columns:
+            1fr 1fr;
+
+    }
+
+
+    .stat-card {
+
+        gap: 7px;
+
+    }
+
+
+    .stat-card strong {
+
+        font-size: 1.05rem;
+
+    }
+
+
+    .game-area {
+
+        min-height: 450px;
+
+    }
+
 }
